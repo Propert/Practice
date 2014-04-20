@@ -1,0 +1,8 @@
+2D top-down fighting game with swords for two players
+block left/right
+swish swish cut. stab.
+
+3 attacks: stab, left cut, right cut
+2 blocks: left side, right side (stabs are blocked when switching side)
+
+1 hit kill
