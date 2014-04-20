@@ -1,35 +1,4 @@
 
-function love.load()
-    -- What could be cooler then a hamster? A hamster in a fucking ball!
-    hamster = {
-        image = love.graphics.newImage("hamster.png"),
-        x = 50,
-        y = 50,
-        speed = 300,
-    }
-    -- Mice is the shit.
-    mouse = {
-        image = love.graphics.newImage("mouse.png"),
-        x = 150,
-        y = 150,
-        speed = 300,
-    }
-
-    -- Set up the controls for each player
-    player_one = {
-        up = 'up',
-        down = 'down',
-        left = 'left',
-        right = 'right',
-    }
-    player_two= {
-        up = 'w',
-        down = 's',
-        left = 'a',
-        right = 'd',
-    }
-end
-
 function move_entity(entity, delta_x, delta_y)
     -- Let an entity move around.
     -- TODO: Collision checks
@@ -61,6 +30,41 @@ function player_control(player, entity, dt)
 
     move_entity(entity, delta_x, delta_y)
 end
+
+-------------------------------------------------------------------------------
+
+function love.load()
+    -- What could be cooler then a hamster? A hamster in a fucking ball!
+    hamster = {
+        image = love.graphics.newImage("hamster.png"),
+        x = 50,
+        y = 50,
+        speed = 300,
+    }
+    -- Mice is the shit.
+    mouse = {
+        image = love.graphics.newImage("mouse.png"),
+        x = 150,
+        y = 150,
+        speed = 300,
+    }
+
+    -- Set up the controls for each player
+    player_one = {
+        up = 'up',
+        down = 'down',
+        left = 'left',
+        right = 'right',
+    }
+    player_two= {
+        up = 'w',
+        down = 's',
+        left = 'a',
+        right = 'd',
+    }
+end
+
+-------------------------------------------------------------------------------
 
 function love.update(dt)
     player_control(player_one, hamster, dt)
