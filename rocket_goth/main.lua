@@ -7,6 +7,27 @@ function love.load()
         y = 50,
         speed = 300,
     }
+    -- Mice is the shit.
+    mouse = {
+        image = love.graphics.newImage("mouse.png"),
+        x = 150,
+        y = 150,
+        speed = 300,
+    }
+
+    -- Set up the controls for each player
+    player_one = {
+        up = 'up',
+        down = 'down',
+        left = 'left',
+        right = 'right',
+    }
+    player_two= {
+        up = 'w',
+        down = 's',
+        left = 'a',
+        right = 'd',
+    }
 end
 
 function move_entity(entity, delta_x, delta_y)
@@ -16,20 +37,20 @@ function move_entity(entity, delta_x, delta_y)
     entity.y = entity.y + delta_y
 end
 
-function player_control(entity, dt)
+function player_control(player, entity, dt)
     -- Put a player behind the wheel and let him drive some cool entity.
     -- Calculate the movement deltas and then do the actual moving.
     delta_x, delta_y = 0, 0
 
-    if love.keyboard.isDown("right") then
+    if love.keyboard.isDown(player.right) then
         delta_x = entity.speed * dt
-    elseif love.keyboard.isDown("left") then
+    elseif love.keyboard.isDown(player.left) then
         delta_x = -entity.speed * dt
     end
 
-    if love.keyboard.isDown("down") then
+    if love.keyboard.isDown(player.down) then
         delta_y = entity.speed * dt
-    elseif love.keyboard.isDown("up") then
+    elseif love.keyboard.isDown(player.up) then
         delta_y = - entity.speed * dt
     end
 
@@ -37,7 +58,8 @@ function player_control(entity, dt)
 end
 
 function love.update(dt)
-    player_control(hamster, dt)
+    player_control(player_one, hamster, dt)
+    player_control(player_two, mouse, dt)
 end
 
 function love.draw()
