@@ -37,6 +37,11 @@ function move_entity(entity, delta_x, delta_y)
     entity.y = entity.y + delta_y
 end
 
+function draw_entity(entity)
+    -- Do some screen blit voodoo.
+    love.graphics.draw(entity.image, entity.x, entity.y)
+end
+
 function player_control(player, entity, dt)
     -- Put a player behind the wheel and let him drive some cool entity.
     -- Calculate the movement deltas and then do the actual moving.
@@ -62,6 +67,8 @@ function love.update(dt)
     player_control(player_two, mouse, dt)
 end
 
+
 function love.draw()
-    love.graphics.draw(hamster.image, hamster.x, hamster.y)
+    draw_entity(hamster)
+    draw_entity(mouse)
 end
